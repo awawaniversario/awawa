@@ -1,0 +1,551 @@
+/* Estilos Globales y Variables */
+:root {
+    --primary-bg: #FFFFFF; /* Mantenemos el blanco como Cinnamoroll */
+    --secondary-bg: #EFF8FF; /* Azul muy claro como el cielo de Cinnamoroll */
+    --text-dark: #5B6770; /* Gris azulado suave */
+    --text-light: #FFFFFF;
+    --accent-romantic: #88C6E7; /* Azul celeste como las orejas de Cinnamoroll */
+    --accent-warm: #FFCCD0; /* Rosa suave como los detalles de Cinnamoroll */
+    --border-light: #D9EEFF;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    line-height: 1.7;
+    background-color: var(--primary-bg);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem; /* Ajustar según preferencia */
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--accent-romantic); /* Darle un toque de color a los títulos de sección */
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--accent-romantic);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background-color: var(--accent-romantic);
+    color: var(--text-light);
+    border: 2px solid var(--accent-romantic);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Modificar el hover del botón para que use el color cálido */
+.btn:hover {
+    background-color: transparent;
+    color: var(--accent-romantic);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* Header y Navegación */
+header {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 0.8rem 0;
+}
+
+nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-romantic);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 1.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 400; /* Más ligero que el botón */
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--accent-romantic);
+    font-weight: 600;
+}
+
+#menu-toggle {
+    display: none; /* Oculto en escritorio */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    background: url('img/pareja-principal.jpg') no-repeat center center/cover; /* CAMBIA ESTA IMAGEN */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-light);
+    position: relative; /* Para el overlay */
+    padding-top: 60px; /* Para compensar el header fijo */
+}
+
+.hero-section::before { /* Overlay oscuro para legibilidad del texto */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Ajusta la opacidad */
+}
+
+.hero-content {
+    position: relative; /* Para estar sobre el overlay */
+    z-index: 1;
+    padding: 2rem;
+    border-radius: 50px;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Tamaño adaptable */
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Secciones de Contenido General */
+.content-section {
+    padding: 80px 2rem; /* Espacio arriba (header fijo) y abajo */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content-section:nth-child(even) { /* Alternar colores de fondo */
+    background-color: var(--secondary-bg);
+}
+
+/* Estilos para Animación de Scroll */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Timeline (Nuestra Historia) */
+.timeline {
+    position: relative;
+    margin-top: 2rem;
+}
+
+.timeline::before { /* Línea central */
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--accent-romantic);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    width: 50%;
+    padding: 10px 30px;
+}
+
+.timeline-item:nth-child(odd) { /* Elementos impares a la izquierda */
+    left: 0;
+    padding-right: 50px; /* Espacio para el punto */
+    text-align: right;
+}
+.timeline-item:nth-child(odd)::after { /* Punto en la línea */
+    right: -11px; /* (ancho del punto / 2) - (ancho linea / 2)  */
+}
+
+.timeline-item:nth-child(even) { /* Elementos pares a la derecha */
+    left: 50%;
+    padding-left: 50px; /* Espacio para el punto */
+    text-align: left;
+}
+.timeline-item:nth-child(even)::after { /* Punto en la línea */
+    left: -11px;
+}
+
+.timeline-item::after { /* Puntos en la línea */
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 25px;
+    height: 25px;
+    background-color: var(--primary-bg);
+    border: 4px solid var(--accent-romantic);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-date {
+    font-weight: 600;
+    color: var(--accent-romantic);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+.timeline-content p {
+    font-size: 0.95rem;
+}
+
+
+/* Galería */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1001;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-lightbox:hover,
+.close-lightbox:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px; /* Adjust if needed */
+}
+
+
+/* Carta para Ti */
+
+#carta {
+    border-radius: 50px;
+}
+.letter-content {
+    background-color: var(--primary-bg);
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--accent-romantic);
+}
+.letter-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Momentos Favoritos */
+.favorite-moments {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.moment-category {
+    background-color: var(--secondary-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+}
+.moment-category h3 {
+    color: var(--accent-romantic);
+    margin-top: 0;
+}
+.moment-category ul {
+    list-style: none; /* Considerar iconos o '✓' */
+    padding-left: 0;
+}
+.moment-category ul li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+.moment-category ul li::before {
+    content: "♡ "; /* Pequeño detalle romántico */
+    color: var(--accent-romantic);
+    margin-right: 0.5em;
+}
+
+
+/* Sorpresa */
+#sorpresa-seccion {
+    text-align: center;
+}
+#btn-revelar-sorpresa {
+    display: block;
+    margin: 0 auto;
+    max-width: 250px;
+}
+#contenido-sorpresa.hidden {
+    display: none;
+}
+#contenido-sorpresa {
+    margin-top: 2rem;
+    text-align: center;
+}
+#contenido-sorpresa video,
+#contenido-sorpresa img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+
+/* Cuenta Regresiva */
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Espacio entre elementos */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.countdown-timer div {
+    background-color: var(--accent-romantic);
+    color: var(--text-light);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    min-width: 80px; /* Ancho mínimo para cada caja */
+}
+.countdown-timer span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.countdown-target {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-dark);
+}
+
+
+/* Music Player */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+#play-pause-music {
+    padding: 0.7rem 1rem;
+    background-color: var(--accent-romantic);
+    color: var(--text-light);
+    border: none;
+    border-radius: 25px; /* Botón redondo */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-size: 0.9rem;
+}
+#play-pause-music:hover {
+    background-color: #6EB5DB; /* Un azul celeste un poco más oscuro */
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--text-dark);
+    color: var(--secondary-bg); /* Usar un color claro del fondo */
+    font-size: 0.9rem;
+}
+footer p { margin-bottom: 0; }
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+
+    nav ul {
+        display: none; /* Ocultar menú normal */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav ul.active {
+        display: flex; /* Mostrar cuando está activo */
+    }
+    nav ul li {
+        margin: 0;
+        text-align: center;
+        border-bottom: 1px solid var(--border-light);
+    }
+    nav ul li a {
+        display: block;
+        padding: 1rem;
+    }
+    #menu-toggle {
+        display: block; /* Mostrar botón hamburguesa */
+    }
+
+    .hero-content { padding: 1rem; }
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content p { font-size: 1rem; }
+
+    /* Timeline en móvil: apilado */
+    .timeline::before { left: 30px; }
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px; /* Espacio para el punto y la fecha */
+        padding-right: 15px;
+        text-align: left !important; /* Forzar alineación */
+    }
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    .timeline-item::after {
+        left: 18px; /* Ajustar posición del punto */
+    }
+    .timeline-date {
+      position: absolute;
+      left: -10px; /* Mover fecha un poco más a la izquierda del punto */
+      top: 18px;
+      width: 60px; /* Para que no se monte con el punto */
+      text-align: right;
+      font-size: 0.8rem;
+    }
+
+
+    .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    .gallery-image { height: 150px; }
+
+    .countdown-timer { flex-direction: column; gap: 0.5rem; }
+    .countdown-timer div { padding: 0.5rem 1rem; min-width: auto; }
+    .countdown-timer span { font-size: 1.8rem; }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 1.8rem; }
+    .nav-logo { font-size: 1.2rem; }
+    .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+}
